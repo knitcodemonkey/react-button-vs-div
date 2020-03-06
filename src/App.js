@@ -2,8 +2,7 @@ import React, { useState } from 'react'
 import './App.css'
 import Button from './components/Button'
 import DivButton from './components/DivButton'
-
-// import ButtonVsDiv from './CompletedButtonVsDiv'
+// import DivButton from './CompletedDivButton'
 
 function App() {
   const [hideText, setHideText] = useState(true)
@@ -12,8 +11,7 @@ function App() {
       <header className="App-header">
         <h1>Button vs. Div</h1>
         <p>
-          "You can make a <br />
-          div accessible, so <br />
+          "You can make an accessible div, so
           what's the big deal?"
         </p>
       </header>
