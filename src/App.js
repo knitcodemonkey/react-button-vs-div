@@ -1,26 +1,45 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React, { useState } from 'react'
+import './App.css'
+import Button from './components/Button'
+import DivButton from './components/DivButton'
+
+// import ButtonVsDiv from './CompletedButtonVsDiv'
 
 function App() {
+  const [hideText, setHideText] = useState(true)
   return (
     <div className="App">
       <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
+        <h1>Button vs. Div</h1>
         <p>
-          Edit <code>src/App.js</code> and save to reload.
+          "You can make a <br />
+          div accessible, so <br />
+          what's the big deal?"
         </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
       </header>
+      <nav>
+        <Button
+          hideText={hideText}
+          setHideText={setHideText}
+        />
+        <DivButton
+          hideText={hideText}
+          setHideText={setHideText}
+        />
+      </nav>
+      <main>
+        <p
+          css={{
+            display: hideText ? 'none' : 'block'
+          }}
+        >
+          It is amazing how much work you have to
+          do to get a div to look and act like a
+          button.
+        </p>
+      </main>
     </div>
-  );
+  )
 }
 
-export default App;
+export default App
