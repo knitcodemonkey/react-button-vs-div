@@ -5,15 +5,15 @@ const allowedKeys = [
   32 // Space
 ]
 
-const DivButton = ({ hideText, setHideText }) => {
+const DivButton = ({ onClick, ...rest }) => {
   return (
     <div
       role="button"
       tabIndex="0"
-      onClick={() => setHideText(!hideText)}
+      onClick={onClick}
       onKeyPress={e => {
         allowedKeys.indexOf(e.charCode) > -1 &&
-          setHideText(!hideText)
+          onClick()
       }}
       css={{
         // Did you forget about this? I forgot about this.
@@ -30,9 +30,8 @@ const DivButton = ({ hideText, setHideText }) => {
           backgroundColor: '#e3e3e3'
         }
       }}
-    >
-      I am a div
-    </div>
+      {...rest}
+    />
   )
 }
 

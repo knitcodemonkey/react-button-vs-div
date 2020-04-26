@@ -1,16 +1,11 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 
-const DivButton = ({ hideText, setHideText }) => {
-  return (
-    <div onClick={() => setHideText(!hideText)}>
-      I am a div
-    </div>
-  )
+const DivButton = ({ onClick, ...rest }) => {
+  return <div onClick={onClick} {...rest} />
 }
 
 DivButton.propTypes = {
-  hideText: PropTypes.bool.isRequired,
-  setHideText: PropTypes.func.isRequired
+  onClick: PropTypes.func.isRequired
 }
 export default DivButton

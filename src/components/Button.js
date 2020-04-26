@@ -1,19 +1,23 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 
-const Button = ({ hideText, setHideText }) => {
+const Button = ({ onClick, ...rest }) => {
   return (
     <button
-      onClick={() => setHideText(!hideText)}
-    >
-      I am a button
-    </button>
+      onClick={onClick}
+      type="button"
+      css={{
+        background: 'none',
+        border: 'none',
+        display: 'block'
+      }}
+      {...rest}
+    />
   )
 }
 
 Button.propTypes = {
-  hideText: PropTypes.bool.isRequired,
-  setHideText: PropTypes.func.isRequired
+  onClick: PropTypes.func.isRequired
 }
 
 export default Button
