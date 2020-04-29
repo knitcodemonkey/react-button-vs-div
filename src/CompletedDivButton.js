@@ -1,17 +1,19 @@
 import React from 'react'
-import '../App.css'
 
-const allowedKeys = ['Enter', 'Space']
+const allowedKeys = [
+  13, // Enter
+  32 // Space
+]
 
-const DivButton = ({ hideText, setHideText }) => {
+const DivButton = ({ onClick, ...rest }) => {
   return (
     <div
       role="button"
       tabIndex="0"
-      onClick={() => setHideText(!hideText)}
+      onClick={onClick}
       onKeyPress={e => {
-        allowedKeys.indexOf(e?.code) > -1 &&
-          setHideText(!hideText)
+        allowedKeys.indexOf(e.charCode) > -1 &&
+          onClick()
       }}
       css={{
         // Did you forget about this? I forgot about this.
@@ -19,15 +21,17 @@ const DivButton = ({ hideText, setHideText }) => {
         textAlign: 'center',
         color: 'buttontext', // this is a thing?
         borderRadius: 2, // so tiny, so cute
-        backgroundColor: '#EFEFEF', // The 2000's called...
+        backgroundColor: '#efefef', // The 2000's called...
         boxSizing: 'border-box', // #love
         padding: '1px 7px', // huh. 7px. Not my first guess.
         border: '1px outset #767676', // random, but okay
-        cursor: 'pointer' // iOS: "No pointer? no clicky."
+        cursor: 'pointer', // iOS: "No pointer? no clicky."
+        '&:hover': {
+          backgroundColor: '#e3e3e3'
+        }
       }}
-    >
-      I am a div
-    </div>
+      {...rest}
+    />
   )
 }
 
